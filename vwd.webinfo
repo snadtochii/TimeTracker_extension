@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<!-- 
+  Visual Studio global web project settings.
+-->
+<VisualWebDeveloper>
+
+  <iisExpressSettings sslPort="44325" windowsAuthentication="disabled" anonymousAuthentication="enabled" useClassicPipelineMode="false"/>
+
+  <Globals>
+    <UserProperties json_1json__JSONSchema="http://json.schemastore.org/config"/>
+  </Globals>
+</VisualWebDeveloper>

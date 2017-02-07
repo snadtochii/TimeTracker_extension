@@ -1,0 +1,18 @@
+{
+  "name": "JS Code Injection",
+  "version": "1.0",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": [ "https://m3s.materialise.net/*" ],
+      "js": [ "jquery.js", "bg.js" ],
+	  "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    "/in.js"
+  ],
+        "browser_action": {
+        "default_popup": "index.html"
+    }
+}
