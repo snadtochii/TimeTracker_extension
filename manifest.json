@@ -1,16 +1,16 @@
 {
-  "name": "JS Code Injection",
+  "name": "Time Tracker extention",
   "version": "1.0",
   "manifest_version": 2,
   "content_scripts": [
     {
       "matches": [ "https://m3s.materialise.net/*" ],
-      "js": [ "jquery.js", "bg.js" ],
+      "js": [ "jquery.js", "background.js" ],
 	  "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [
-    "/in.js"
+    "/inject.js"
   ],
         "browser_action": {
         "default_popup": "index.html"

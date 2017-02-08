@@ -1,31 +1,80 @@
 function injected_main() {
-    let trackingData = {};
-    $("button, a").click(function () {
-        setTimeout(setClick, 2000);
-    });
-    setClick();
-    function setClick() {
-        var setClickInterval = setInterval(function () {
-            let trackButton = $('[data-bind="jqButton: {disabled: !timeTrackEnabled()}, click: trackTime"]');
-            if ($(trackButton)) {
+    //var observer = new MutationObserver(function (mutations) {
+    //    mutations.forEach(function (mutation) {
+    //        if (!mutation.addedNodes) return
+    //        //setClick();
+    //        for (var i = 0; i < mutation.addedNodes.length; i++) {
+    //            // do things to your newly added nodes here
+    //            var node = mutation.addedNodes[i]
+    //            //$(node).css("background", "red")
+    //            console.log(node);
+    //            if ($(node).data("bind") == "with: trackedTimeInfo") { //continue;!!!!!!!!!!!!
+    //                $(node).css("background", "gray");
+    //                setClick();
+    //                //$(node).click(setClick);
+    //                break;
+    //            }
 
-                $('[data-bind="text: totalTimeSpentForCaseFormatted"]').css("background", "red");
-                //needed data
-                //track-button
-                $(trackButton).click(dataCatcher);
-                clearInterval(setClickInterval);
-            }
-        }, 500);//timer needs to be re-configured
-    }
+    //        }
+    //    })
+    //})
+
+    //observer.observe(document, {
+    //    childList: true
+    //  , subtree: true
+    //  , attributes: true
+    //  , characterData: true
+    //  ,  subtree: true
+    //});
+
+
+
+
+    //var setClickInterval = setInterval(function () {
+    //    let trackButton = $('[data-bind="jqButton: {disabled: !timeTrackEnabled()}, click: trackTime"]');
+    //    if (trackButton) {
+
+    //        //var events = $(trackButton).data('events');
+    //        //console.dir(events);
+
+    //        //if (events) {
+    //        //    $.each(events, function (event, obj) {
+    //        //        console.dir(event);
+
+    //        //    });
+    //        //}
+
+    //        //$('[data-bind="text: totalTimeSpentForCaseFormatted"]').css("background", "red");
+    //        $(trackButton).css("background", "green");
+
+    //        //needed data
+    //        //track-button
+    //        $(trackButton).click(dataCatcher);
+    //        clearInterval(setClickInterval);
+    //    }
+    //}, 100);
+
+    $(document).click(() => {
+        let trackButton = $('[data-bind="jqButton: {disabled: !timeTrackEnabled()}, click: trackTime"]');
+        if (trackButton) {
+            $(trackButton).off("click", dataCatcher);
+
+            //$(trackButton).css("background", "red");
+            $('[data-bind="text: totalTimeSpentForCaseFormatted"]').css("background", "red");
+
+            $(trackButton).click(dataCatcher);
+        }
+    });
+    const lastWordPat =/(\w+)$/;
+
     function dataCatcher() {
+        let trackingData = {};
 
         trackingData.caseID = $('#copyCaseCode').html();
         trackingData.step = $('#case-indicator-text').html();
-        trackingData.caseType  = $('#surgeryTypeName').html();
+        trackingData.caseType = $('#surgeryTypeName').html();
         trackingData.time = $('#txtDuration').val();//time
-        //if (tracking) {
-
-        //}
+        trackingData.role = (lastWordPat.exec(trackingData.step)[0] == "QC") ? "qe" : "ce";//последнее слово
         $.ajax({
             url: "https://localhost:8093/WriteHandler.ashx",
             method: "POST",

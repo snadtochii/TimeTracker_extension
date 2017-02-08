@@ -1,23 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Parser</title>
+    <title></title>
     <meta charset="utf-8" />
 
     <script src="jquery.js"></script>
 
     <link href="StyleSheet.css" rel="stylesheet" />
-    <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
-    <script src="js.js"></script>
+    <script src="read.js"></script>
 
 </head>
 
 <body>
-    <div>
-        <button id="button">1111</button>
-        <p id="par"></p>
-    </div>
+    <main>
+        <button id="get-ce" class="get-time" data-role="ce">CE</button>
+        <button id="get-qe" class="get-time" data-role="qe">QE</button>
+
+        <input type="date" id="date" value="" />
+        <div id="content">
+            <p id="par"></p>
+        </div>
+    </main>
 </body>
 </html>

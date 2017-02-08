@@ -17,13 +17,14 @@ public class WriteHandler : IHttpHandler
         string caseID = context.Request["caseID"];
         string step = context.Request["step"];
         string caseType = context.Request["caseType"];
+        string role = context.Request["role"];
         int time = Convert.ToInt32(context.Request["time"]);
         DateTime date = DateTime.Now;
 
-        StepToWrite toWrite = new StepToWrite(caseID, step, caseType, time, date);
+        StepToWrite toWrite = new StepToWrite(caseID, step, caseType, role, time, date);
 
-        //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\Extention\\db.json");
-        string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\Extention\\db.json");
+        //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\db.json");
+        string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\db.json");
 
 
         List<StepToWrite> collection = JsonConvert.DeserializeObject<List<StepToWrite>>(fileContent);
@@ -33,8 +34,8 @@ public class WriteHandler : IHttpHandler
         string stringToWrite = JsonConvert.SerializeObject(collection);
         //stringToWrite = JsonConvert.SerializeObject(toWrite);
 
-        //File.WriteAllText("F:\\Dropbox\\JS\\LUT\\Extention\\db.json", stringToWrite);
-        File.WriteAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\Extention\\db.json", stringToWrite);
+        //File.WriteAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\db.json", stringToWrite);
+        File.WriteAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\db.json", stringToWrite);
 
 
         context.Response.Write("Hello World");

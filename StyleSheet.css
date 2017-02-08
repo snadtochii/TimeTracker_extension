@@ -1,7 +1,19 @@
 ﻿body {
+        font-family:Calibri;
+    font-size: 10px;
 }
-div{
+main{
+    display: block;
+        text-align: center;
     width: 250px;
-    height: 200px;
-    background-color: aqua;
+    height: 100px;
+    /*background-color: aqua;*/
+}
+p{
+    margin: 0px;
+}
+#content{
+    display:block;
+    text-align: center;
+    font-size: 4rem;
 }
