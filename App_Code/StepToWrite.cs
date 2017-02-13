@@ -14,13 +14,15 @@ public class StepToWrite
     public string Role { get; set; }
     public int Time { get; set; }
     public DateTime Date { get; set; }
+    public bool IsOBL { get; set; }
 
-    public StepToWrite(string caseID,string step, string caseType, string role, int time, DateTime date)
+    public StepToWrite(string caseID,string step, string caseType, string role, bool isOBL, int time, DateTime date)
     {
         this.CaseID = caseID;
         this.Step = step;
         this.CaseType = caseType;
         this.Role = role;
+        this.IsOBL = isOBL;
         this.Time = time;
         this.Date = date;
     }

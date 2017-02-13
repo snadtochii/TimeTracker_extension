@@ -1,0 +1,53 @@
+﻿body {
+    font-family:Calibri;
+    font-size: 16px;
+}
+.conteiner-fluid{
+    width: 280px;
+    padding: 7px;
+}
+p{
+    text-align: center;
+    margin: 0px;
+}
+.first-row{
+    display: inline-block;
+}
+
+#date-conteiner{
+    width: 50%;
+}
+#date-conteiner input{
+    height: 42px;
+    border-radius: 4px;
+}
+#nav-panel{
+    margin: 0;
+}
+table{
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+table tr:first-child{
+        border-bottom: 1px solid #ccc
+}
+td{
+    width: 50%;
+}
+.time{
+    font-size: 4rem;
+}
+#loader{
+    display:none;
+    position: absolute;
+    top: 50%;
+    left: 11%;
+}
+#dropdownMenu2, .dropdown-menu{
+    border: none;
+    width: 100%;
+}
+.opacity{
+    opacity: 0.1;
+}

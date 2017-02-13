@@ -7,13 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 public class ReadHandler : IHttpHandler
 {
 
     public void ProcessRequest(HttpContext context)
     {
-        context.Response.ContentType = "text/plain";
+        context.Response.ContentType = "application/json";
         context.Response.AppendHeader("Access-Control-Allow-Origin", "*");
 
         int y = Convert.ToInt32(context.Request["y"]);
@@ -21,24 +22,31 @@ public class ReadHandler : IHttpHandler
         int d = Convert.ToInt32(context.Request["d"]);
         string role = context.Request["role"];
 
-
         DateTime date = new DateTime(y, m, d);
 
-        //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\db.json");
-        string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\db.json");
+        //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json");
+        //string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json");
+        //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json");//home
+        string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json");//work
 
         List<StepToWrite> collection = JsonConvert.DeserializeObject<List<StepToWrite>>(fileContent);
-
+        int timeSynthes = 0;
+        int timeObl = 0;
         var selection = from step in collection
                         where step.Date.Day == d && step.Date.Month == m && step.Date.Year == y && step.Role == role
                         select step;
-        int timeRez = 0;
+
         foreach (var step in selection)
         {
-            timeRez += step.Time;
+            if (step.IsOBL)
+            {
+                timeObl += step.Time;
+                continue;
+            }
+            timeSynthes += step.Time;
         }
-        //date.ToString("dd.MM.yyyy")
-        context.Response.Write(timeRez);
+
+        context.Response.Write(JsonConvert.SerializeObject(new { timeSynthes = timeSynthes, timeObl = timeObl}));
     }
 
     public bool IsReusable

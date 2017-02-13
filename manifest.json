@@ -1,16 +1,16 @@
 {
   "name": "Time Tracker extention",
-  "version": "1.0",
+  "version": "0.7.1",
   "manifest_version": 2,
   "content_scripts": [
     {
       "matches": [ "https://m3s.materialise.net/*" ],
-      "js": [ "jquery.js", "background.js" ],
+      "js": [ "js/jquery.js", "js/background.js" ],
 	  "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [
-    "/inject.js"
+    "js/inject.js"
   ],
         "browser_action": {
         "default_popup": "index.html"

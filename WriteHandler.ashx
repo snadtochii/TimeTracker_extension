@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 
 public class WriteHandler : IHttpHandler
 {
-
     public void ProcessRequest(HttpContext context)
     {
         context.Response.ContentType = "text/plain";
@@ -18,13 +17,16 @@ public class WriteHandler : IHttpHandler
         string step = context.Request["step"];
         string caseType = context.Request["caseType"];
         string role = context.Request["role"];
+        bool isOBl = Convert.ToBoolean(context.Request["isOBL"]);
         int time = Convert.ToInt32(context.Request["time"]);
         DateTime date = DateTime.Now;
 
-        StepToWrite toWrite = new StepToWrite(caseID, step, caseType, role, time, date);
+        StepToWrite toWrite = new StepToWrite(caseID, step, caseType, role, isOBl, time, date);
 
-        //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\db.json");
-        string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\db.json");
+        //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json");
+        //string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json");
+        //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json");//home
+        string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json");//work
 
 
         List<StepToWrite> collection = JsonConvert.DeserializeObject<List<StepToWrite>>(fileContent);
@@ -34,11 +36,13 @@ public class WriteHandler : IHttpHandler
         string stringToWrite = JsonConvert.SerializeObject(collection);
         //stringToWrite = JsonConvert.SerializeObject(toWrite);
 
-        //File.WriteAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\db.json", stringToWrite);
-        File.WriteAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\db.json", stringToWrite);
+        //File.WriteAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json", stringToWrite);
+        //File.WriteAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json", stringToWrite);
+        //File.WriteAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json", stringToWrite);//home
+        File.WriteAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json", stringToWrite);//work
 
 
-        context.Response.Write("Hello World");
+        context.Response.Write(toWrite.CaseID);
     }
 
     public bool IsReusable
