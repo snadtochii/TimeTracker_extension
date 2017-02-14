@@ -34,6 +34,14 @@ function injected_main() {
             complete: function (data) { console.dir(data) },
             //error: function () { alert('error') }
         });
+
+        $.ajax({
+            url: "https://localhost:8094/SQLHandler.ashx",
+            method: "POST",
+            data: trackingData,
+            complete: function (data) { console.dir(data) },
+            error: function () { alert('error') }
+        });
     }
     function enterTrack(e) {
         if (e.key == "Enter") {
