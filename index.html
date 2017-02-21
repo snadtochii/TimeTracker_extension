@@ -24,18 +24,6 @@
 <body>
     <div class="conteiner-fluid">
         <div class="row">
-            <!--<div class="col-sm-6 first-row">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon" id="basic-addon3">Select date</span>
-                    <input type="date" class="form-control" id="date" placeholder="Username" aria-describedby="basic-addon3">
-                </div>
-
-            </div>-->
-            <!-- /input-group -->
-
-
-        </div>
-        <div class="row">
             <div class="col-sm-3 first-row">
                 <ul class="nav nav-pills" id="nav-panel">
                     <li role="presentation" class="tabs" data-role="ce"><a href="#">CE</a></li>
@@ -50,33 +38,76 @@
             </div>
 
         </div>
-        <div class="row" id="output">
+        <div class="row" id="table-head-row">
             <div class="col-md-12">
                 <table>
                     <tr>
                         <td>SYNTHES</td>
                         <td>OBL</td>
+                        <td>SUM</td>
                     </tr>
-                    <tr>
-                        <td id="time-synthes" class="time">&nbsp;</td>
-                        <td id="time-OBL" class="time">&nbsp;</td>
-                    </tr>
+
                 </table>
+
+            </div>
+        </div>
+        <div class="row" id="output">
+            <div class="col-md-12">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <!--<ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>-->
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <table>
+                                <tr>
+                                    <td id="time-synthes" class="time">&nbsp;</td>
+                                    <td id="time-OBL" class="time">&nbsp;</td>
+                                    <td id="time-sum" class="time">&nbsp;</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a id="left" class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a id="right" class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
                 <img src="img/loader.gif" id="loader" alt="" />
+                <!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>-->
             </div>
         </div>
         <div id="row">
             <div class="col-sm-12">
                 <div class="dropup">
                     <button class="btn btn-default dropdown-toggle btn-sm" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false" data-time-format="mm">
-                        Minutes
+                        aria-expanded="false" data-time-format="hh">
+                        <span></span>
+                        <!--Min/Hours-->
                         <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li data-time-format="mm"><a href="#">Minutes</a></li>
-                        <li data-time-format="hh"><a href="#">Hours</a></li>
-                    </ul>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li data-time-format="hh"><a href="#">Hours</a></li>
+                            <li data-time-format="mm"><a href="#">Minutes</a></li>
+                        </ul>
                 </div>
             </div>
         </div>
@@ -88,7 +119,14 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/interface.js"></script>
+    <script src="js/getSetDate.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
 
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>

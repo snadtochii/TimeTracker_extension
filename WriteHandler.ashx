@@ -23,24 +23,17 @@ public class WriteHandler : IHttpHandler
 
         StepToWrite toWrite = new StepToWrite(caseID, step, caseType, role, isOBl, time, date);
 
-        //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json");
-        //string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json");
         //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json");//home
         string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json");//work
-
 
         List<StepToWrite> collection = JsonConvert.DeserializeObject<List<StepToWrite>>(fileContent);
 
         collection.Add(toWrite);
 
         string stringToWrite = JsonConvert.SerializeObject(collection);
-        //stringToWrite = JsonConvert.SerializeObject(toWrite);
 
-        //File.WriteAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json", stringToWrite);
-        //File.WriteAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json", stringToWrite);
         //File.WriteAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json", stringToWrite);//home
         File.WriteAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json", stringToWrite);//work
-
 
         context.Response.Write(toWrite.CaseID);
     }

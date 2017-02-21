@@ -3,7 +3,7 @@
     font-size: 16px;
 }
 .conteiner-fluid{
-    width: 280px;
+    width: 321px;
     padding: 7px;
 }
 p{
@@ -27,13 +27,16 @@ p{
 table{
     width: 100%;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+}
+#table-head-row{
+    padding-top: 10px;
 }
 table tr:first-child{
-        border-bottom: 1px solid #ccc
+        /*border-bottom: 1px solid #ccc*/
 }
 td{
-    width: 50%;
+    width: 33.3%;
 }
 .time{
     font-size: 4rem;
@@ -41,13 +44,18 @@ td{
 #loader{
     display:none;
     position: absolute;
-    top: 50%;
-    left: 11%;
+    width: 80%;
+    top: 30%;
+    left: 10%;
 }
 #dropdownMenu2, .dropdown-menu{
     border: none;
     width: 100%;
 }
 .opacity{
-    opacity: 0.1;
+    opacity: 0.5;
+}
+#left, #right{
+    width: 20px;
+    background: white;
 }

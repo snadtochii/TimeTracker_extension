@@ -14,7 +14,7 @@ function injected_main() {
         }
     });
     const lastWordPattern = /(\w+)$/;
-    const oblPattern = /(OB).+/;
+    const oblPattern = /^(OB).+/;
     function dataCatcher() {
         let trackingData = {};
 

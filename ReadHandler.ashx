@@ -21,11 +21,14 @@ public class ReadHandler : IHttpHandler
         int m = Convert.ToInt32(context.Request["m"]);
         int d = Convert.ToInt32(context.Request["d"]);
         string role = context.Request["role"];
-
+		
+        //y = 2017;
+        //m = 2;
+        //d = 20;
+        //role ="qe";
+		
         DateTime date = new DateTime(y, m, d);
 
-        //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json");
-        //string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention\\data.json");
         //string fileContent = File.ReadAllText("F:\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json");//home
         string fileContent = File.ReadAllText("D:\\duducaon\\Dropbox\\JS\\LUT\\TimeTracker_extention-bootstrap\\data.json");//work
 
