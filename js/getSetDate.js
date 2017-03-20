@@ -1,4 +1,4 @@
-var GetSetDate = function () {
+let GetSetDate = function () {
     function _setDate(date) {
         let defDate;
         if (!arguments[0]) {

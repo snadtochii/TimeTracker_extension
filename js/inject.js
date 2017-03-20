@@ -1,5 +1,6 @@
-function injected_main() {
+function injected_main(x) {
 
+    console.log(x.user.username);
     $(document).click((e) => {
         let trackButton = $('[data-bind="jqButton: {disabled: !timeTrackEnabled()}, click: trackTime"]');
         let timeInput = $('#txtDuration');
@@ -18,29 +19,29 @@ function injected_main() {
     function dataCatcher() {
         let trackingData = {};
 
+        trackingData.username = x.user.username;
         trackingData.caseID = $('#copyCaseCode').html();
         trackingData.step = $('#case-indicator-text').html();
         trackingData.caseType = $('#surgeryTypeName').html();
         trackingData.time = $('#txtDuration').val();//time
         trackingData.role = (lastWordPattern.exec(trackingData.step)[0] == "QC") ? "qe" : "ce";
         trackingData.isOBL = (oblPattern.exec(trackingData.caseID)) ? true : false;
-
+        console.log(trackingData);
         if (!trackingData.caseID) return;
-
+        console.dir(trackingData);
         $.ajax({
-            url: "https://localhost:8094/WriteHandler.ashx",
-            method: "POST",
-            data: trackingData,
-            complete: function (data) { console.dir(data) },
-            //error: function () { alert('error') }
-        });
-
-        $.ajax({
-            url: "https://localhost:8094/SQLHandler.ashx",
-            method: "POST",
-            data: trackingData,
-            complete: function (data) { console.dir(data) },
-            error: function () { alert('error') }
+            type: 'POST',
+            data: JSON.stringify(trackingData),
+            contentType: 'application/json',
+            url: 'https://10.20.24.60:3000/users/write',
+            success: function (data) {
+                console.log('success');
+                console.dir((data));
+            },
+            error: (data) => {
+                alert('Time was not tracked. There are some issues on the server side.')
+                console.log(data);
+            }
         });
     }
     function enterTrack(e) {

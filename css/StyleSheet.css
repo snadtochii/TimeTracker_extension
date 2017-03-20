@@ -3,7 +3,7 @@
     font-size: 16px;
 }
 .conteiner-fluid{
-    width: 321px;
+    width: 350px;
     padding: 7px;
 }
 p{
@@ -11,15 +11,25 @@ p{
     margin: 0px;
 }
 .first-row{
+    font-size: 1.3rem;
+}
+.second-row{
     display: inline-block;
+}
+#name{
+     font-weight: bold;
 }
 
 #date-conteiner{
-    width: 50%;
+    /*width: 50%;*/
+    padding-left: 0px;
 }
 #date-conteiner input{
-    height: 42px;
+    height: 40px;
     border-radius: 4px;
+}
+#nav-conteiner{
+    padding-right: 0px;
 }
 #nav-panel{
     margin: 0;
@@ -58,4 +68,16 @@ td{
 #left, #right{
     width: 20px;
     background: white;
+}
+
+#working-space{
+    display: none;
+}
+
+#auth h2{
+    margin: 0px;
+}
+
+.alert{
+    display: none;
 }
