@@ -91,7 +91,7 @@ $(function () {
                     type: 'POST',
                     data: JSON.stringify(data),
                     contentType: 'application/json',
-                    url: 'https://10.20.24.60:3000/users/read',
+                    url: 'https://10.20.24.60:3000/users/cases/read',
                     success: complete,
                     error: (data) => {
                         $('#error-logged').html('Server is not responding');

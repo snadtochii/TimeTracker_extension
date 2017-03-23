@@ -1,5 +1,8 @@
 function injected_main(x) {
-
+if(x.user === undefined){
+    alert('You are not logged in. Your time will not be tracked in time tracker. If you dont want to use tracking, you can disable tracker in chrome://extensions/');
+    return;
+}
     console.log(x.user.username);
     $(document).click((e) => {
         let trackButton = $('[data-bind="jqButton: {disabled: !timeTrackEnabled()}, click: trackTime"]');
@@ -8,7 +11,7 @@ function injected_main(x) {
             $(trackButton).off("click", dataCatcher);
             $(timeInput).off("keyup", enterTrack);
 
-            $('[data-bind="text: totalTimeSpentForCaseFormatted"]').css("background", "red");
+            //$('[data-bind="text: totalTimeSpentForCaseFormatted"]').css("background", "red");
 
             $(trackButton).click(dataCatcher);
             $(timeInput).keyup(enterTrack);
@@ -33,7 +36,7 @@ function injected_main(x) {
             type: 'POST',
             data: JSON.stringify(trackingData),
             contentType: 'application/json',
-            url: 'https://10.20.24.60:3000/users/write',
+            url: 'https://10.20.24.60:3000/users/cases/write',
             success: function (data) {
                 console.log('success');
                 console.dir((data));
