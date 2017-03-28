@@ -1,8 +1,8 @@
 function injected_main(x) {
-if(x.user === undefined){
-    alert('You are not logged in. Your time will not be tracked in time tracker. If you dont want to use tracking, you can disable tracker in chrome://extensions/');
-    return;
-}
+    if (x.user === undefined) {
+        alert('You are not logged in. Your time will not be tracked in time tracker. If you dont want to use tracking, you can disable tracker in chrome://extensions/');
+        return;
+    }
     console.log(x.user.username);
     $(document).click((e) => {
         let trackButton = $('[data-bind="jqButton: {disabled: !timeTrackEnabled()}, click: trackTime"]');
@@ -11,7 +11,17 @@ if(x.user === undefined){
             $(trackButton).off("click", dataCatcher);
             $(timeInput).off("keyup", enterTrack);
 
-            //$('[data-bind="text: totalTimeSpentForCaseFormatted"]').css("background", "red");
+            $.ajax({
+                type: 'POST',
+                url: 'https://10.20.24.60:3000/users/cases/write',
+                success: () => {
+                    $('#txtDuration').css("border-color", "#B2FF59");
+                },
+                error: () => {
+                    $('#txtDuration').css("border-color", "#FF6E40");
+                }
+            })
+
 
             $(trackButton).click(dataCatcher);
             $(timeInput).keyup(enterTrack);
