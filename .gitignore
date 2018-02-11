@@ -1,1 +1,5 @@
 *.log
+js/jquery.js
+js/bootstrap.min.js
+css/bootstrap.min.css
+css/bootstrap.css

@@ -1,0 +1,15 @@
+{
+  "name": "tt_extension-rebuild",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "auth0-chrome": "^0.1.2",
+    "jwt-decode": "^2.2.0"
+  }
+}

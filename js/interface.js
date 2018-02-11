@@ -20,10 +20,15 @@ $(function () {
             GetSetDate.setDate();
 
             $('#date').change(() => {
-                $('.tabs').removeClass("active");
-                $('#time-synthes').html("&nbsp;");
-                $('#time-OBL').html("&nbsp;");
-                $('#time-sum').html("&nbsp;")
+                let currentDate = new Date($('#date').val());
+                let reqDate = currentDate.setDate(currentDate.getDate() - 1);
+
+                prepareData(reqDate);
+
+                if (!data.role) return;
+
+                console.dir(data);
+                timeReq();
             });
 
             $('#dropdownMenu2').data("time-format") === "mm"
@@ -31,7 +36,7 @@ $(function () {
                 : $('#dropdownMenu2').find(":first-child").html("Hours");
 
             //
-            //geting time from server
+            //get time from server
             //
             $('.tabs').click(function () {
                 $('.tabs').removeClass("active");
@@ -91,7 +96,7 @@ $(function () {
                     type: 'POST',
                     data: JSON.stringify(data),
                     contentType: 'application/json',
-                    url: 'https://10.20.24.60:3000/users/cases/read',
+                    url: 'https://10.20.24.57:3000/users/cases/read',
                     success: complete,
                     error: (data) => {
                         $('#error-logged').html('Server is not responding');

@@ -3,20 +3,19 @@ $(function () {
         e.preventDefault();
 
         const user = {
-            username: $('#username').val(),
-            password: $('#password').val()
+            email: $('#email').val()
         }
         $.ajax({
-            type: 'POST',
-            data: JSON.stringify(user),
+            type: 'GET',
+            data: user,
             contentType: 'application/json',
-            url: 'https://10.20.24.57:3000/users/authenticate',
+            url: 'https://localhost:3000/api/v0/users',
             success: (data) => {
-                if (data.success) {
+                if (data) {
                     storeUserData(data.token, data.user);
                     location.reload();
-                    // $('#auth').css('display', 'none');
-                    // $('#working-space').css('display', 'block');
+                    $('#auth').css('display', 'none');
+                    $('#working-space').css('display', 'block');
                 } else {
                     $('#error').html(data.msg);
                     $('#error-alert').fadeIn();
@@ -24,11 +23,11 @@ $(function () {
                 }
                 console.log(data);
             },
-            error: (data) => {
-                $('#error').html('Server is not responding');
+            error: (error) => {
+                $('#error').html(error.responseJSON.err);
                 $('#error-alert').fadeIn();
                 $('#error-alert').delay(3000).fadeOut();
-                console.log(data);
+                console.log(error.responseJSON.err);
             }
         });
     });
@@ -38,3 +37,5 @@ $(function () {
 
     }
 })
+
+
